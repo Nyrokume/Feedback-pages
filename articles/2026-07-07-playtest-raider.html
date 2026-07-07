@@ -4,358 +4,741 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Плейтест — 07.07.2026 — Feedback Hub</title>
-  <meta name="description" content="Отчёт Raider: организация плейтеста, механика стрельбы, баланс оружия и кровотечения.">
+  <meta name="description" content="Подробный отчёт Raider: организация плейтеста, механика стрельбы, баланс 11 единиц оружия и кровотечения.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-logo" href="../index.html">Feedback Hub</a>
-      <nav class="site-nav">
-        <a href="../index.html">Статьи</a>
-        <a href="2026-07-07-playtest-raider.html" class="is-active">Отчёт</a>
-      </nav>
-    </div>
-  </header>
+  <button class="menu-toggle" id="menuToggle" aria-label="Меню">&#9776; Меню</button>
 
-  <main class="page page--article">
-    <aside class="toc">
-      <p class="toc__title">Содержание</p>
-      <ul>
-        <li><a href="#organization">Организация</a></li>
-        <li><a href="#gameplay">Геймплей — стрельба</a></li>
-        <li><a href="#stats">Фидбек по статам</a></li>
-        <li><a href="#summary">Итог дня</a></li>
-      </ul>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="brand-title">Feedback Hub</div>
+        <div class="brand-sub">07.07.2026 &middot; Raider</div>
+      </div>
+
+      <div class="nav-label">Содержание</div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link"><span class="nav-num">&larr;</span> Все статьи</a>
+        <a href="#section-organization" class="nav-link" data-section="section-organization"><span class="nav-num">01</span> Организация</a>
+        <a href="#section-gameplay" class="nav-link" data-section="section-gameplay"><span class="nav-num">02</span> Стрельба</a>
+        <a href="#section-stats" class="nav-link" data-section="section-stats"><span class="nav-num">03</span> Статы</a>
+        <a href="#section-summary" class="nav-link" data-section="section-summary"><span class="nav-num">04</span> Итог</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Отчёт плейтеста от 07.07.2026. Охват: организация ФГ, механика стрельбы, 11 единиц оружия, кровотечение.</p>
+        <p class="copy">&copy; Raider &middot; 2026</p>
+      </div>
     </aside>
 
-    <article class="article-content">
-      <header class="hero">
-        <p class="section-label">Плейтест · 07.07.2026</p>
-        <h1 class="hero__title">Плейтест — 07.07.2026</h1>
-        <div class="hero__meta">
-          <span>Автор: Raider</span>
-          <span>7 июля 2026 г.</span>
-          <span class="tag tag--blue">плейтест</span>
-          <span class="tag tag--yellow">стрельба</span>
-          <span class="tag tag--green">баланс</span>
-          <span class="tag tag--red">организация</span>
-        </div>
-      </header>
+    <div class="main">
+      <div class="main-inner">
+        <header class="hero">
+          <div class="hero-badge">Плейтест &middot; 07.07.2026</div>
+          <h1>Плейтест &mdash; 07.07.2026</h1>
+          <p class="hero-sub">Полный отчёт по организации плейтеста, механике стрельбы и балансу оружия. Включает претензии к процессу тестирования, анализ отдачи по дистанциям, таблицы статов и рекомендации для следующей итерации.</p>
+          <div class="hero-meta">
+            <span class="badge badge-ok">плейтест</span>
+            <span class="badge badge-warn">стрельба</span>
+            <span class="badge badge-good">баланс</span>
+            <span class="badge badge-bad">организация</span>
+            <span class="article-date">Автор: Raider</span>
+          </div>
+        </header>
 
-      <!-- БЛОК 1: ОРГАНИЗАЦИЯ -->
-      <h2 id="organization">Притензии к организации плейтестов</h2>
+        <main>
+          <!-- 01 ОРГАНИЗАЦИЯ -->
+          <section id="section-organization">
+            <div class="section-head">
+              <span class="section-num">01</span>
+              <h2>Притензии к организации плейтестов</h2>
+            </div>
 
-      <h3>Общие замечания</h3>
-      <div class="block block--issue">
-        <p class="block__label">Проблема</p>
-        <ul>
-          <li>Отсутствие заранее зафиксированной цели плейтеста и этапов тестирования — это усложняет сбор полезного фидбека. Нет чётких сценариев тестирования, уровень теста слишком слабый, чтобы конструктивно описать изменения.</li>
-          <li>Слабая коммуникация и отсутствие чёткого регламента для фидбека. Нет шаблонов и нормальной структуры внутри фокус-группы, не реализованы нормальные процессы тестирования и отсутствует подготовка к тестам.</li>
-        </ul>
+            <div class="content-block">
+              <div class="content-block-title">Контекст</div>
+              <p class="content-block-text">Плейтест 07.07.2026 прошёл без заранее зафиксированных целей и сценариев. Это напрямую повлияло на качество собранного фидбека: участники не понимали, на что смотреть, а итоговые замечания оказались разрозненными и сложными для конвертации в конкретные задачи.</p>
+            </div>
+
+            <h3 class="subsection-title">Общие замечания</h3>
+
+            <div class="info-box info-box--danger">
+              <div class="info-box-title">Критическая проблема</div>
+              <p class="info-box-text">Отсутствие заранее зафиксированной <strong>цели плейтеста</strong> и <strong>этапов тестирования</strong> усложняет сбор полезного фидбека. Нет чётких сценариев, уровень теста слишком слабый, чтобы конструктивно описать изменения.</p>
+            </div>
+
+            <ul>
+              <li><strong>Нет целей теста</strong> &mdash; участники не знают, какие системы приоритетны: стрельба, баланс, обвесы, ТТК, кровотечение.</li>
+              <li><strong>Нет сценариев</strong> &mdash; отсутствуют задания вида «протестируйте АК-105 на 50 м со стрейфом», «сравните XM8 и G36C на средней дистанции».</li>
+              <li><strong>Слабая коммуникация</strong> &mdash; нет регламента для фидбека, шаблонов и структуры внутри фокус-группы.</li>
+              <li><strong>Нет подготовки</strong> &mdash; процессы тестирования не реализованы, участники приходят «просто поиграть».</li>
+            </ul>
+
+            <h3 class="subsection-title">Что мешает тесту</h3>
+
+            <div class="factor">
+              <div class="factor-weight">A</div>
+              <div>
+                <div class="factor-name">Отсутствие рамок</div>
+                <p class="factor-desc">Нет чётких сценариев и слабый регламент внутри фокус-группы. Участники не понимают границы теста и критерии оценки.</p>
+                <span class="factor-tag factor-tag--bad">Блокер</span>
+              </div>
+            </div>
+
+            <div class="factor">
+              <div class="factor-weight">B</div>
+              <div>
+                <div class="factor-name">Восприятие как ивента</div>
+                <p class="factor-desc">Часть участников воспринимает плейтест как обычный ивент без понимания ценности фидбека. Без шаблонности регламентов замечания воспринимаются на уровне плинтуса.</p>
+                <span class="factor-tag factor-tag--bad">Блокер</span>
+              </div>
+            </div>
+
+            <h3 class="subsection-title">Чеклист текущего состояния</h3>
+
+            <ul class="checklist">
+              <li><span class="check-icon check-icon--fail">&#10005;</span><span>Зафиксированные цели плейтеста опубликованы до старта</span></li>
+              <li><span class="check-icon check-icon--fail">&#10005;</span><span>Расписание с этапами тестирования (время, зоны, задачи)</span></li>
+              <li><span class="check-icon check-icon--fail">&#10005;</span><span>Шаблон отчёта в анонсе / закреплённом посте</span></li>
+              <li><span class="check-icon check-icon--fail">&#10005;</span><span>Регламент фокус-группы (формат, дедлайны, структура)</span></li>
+              <li><span class="check-icon check-icon--fail">&#10005;</span><span>Список оружия / систем для обязательного теста</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Discord-структура для фидбека (частично есть, но без шаблона)</span></li>
+            </ul>
+
+            <h3 class="subsection-title">Что улучшить</h3>
+
+            <div class="info-box info-box--success">
+              <div class="info-box-title">Рекомендации</div>
+              <p class="info-box-text">Публиковать перед стартом короткий список <strong>приоритетных целей теста</strong>, <strong>расписание</strong> и чёткое определение <strong>рабочего процесса</strong>. Добавить простой шаблон отчёта прямо в анонс или закреплённый пост.</p>
+            </div>
+
+            <details>
+              <summary>Шаблон анонса плейтеста (рекомендуемый)</summary>
+              <div class="details-body">
+                <div class="content-block" style="margin:0">
+                  <p class="content-block-text"><strong>Дата:</strong> ДД.ММ.ГГГГ, 19:00&ndash;22:00 МСК</p>
+                  <p class="content-block-text"><strong>Цели:</strong></p>
+                  <ol>
+                    <li>Проверить отдачу и разброс на средней/дальней дистанции при стрейфах</li>
+                    <li>Сравнить 11 единиц оружия из списка на синем снаряжении</li>
+                    <li>Оценить изменения кровотечения в PvP-сценариях</li>
+                  </ol>
+                  <p class="content-block-text"><strong>Обязательные сценарии:</strong></p>
+                  <ul>
+                    <li>Стрельба с места &mdash; 30, 50, 80 м</li>
+                    <li>Стрельба со стрейфом &mdash; 30, 50 м</li>
+                    <li>Ближний бой в упор (10&ndash;15 м)</li>
+                  </ul>
+                  <p class="content-block-text"><strong>Формат фидбека:</strong> Google Forms / шаблон в Discord (ссылка)</p>
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Структура шаблона отчёта участника</summary>
+              <div class="details-body">
+                <div class="activity-log">
+                  <div class="activity-item">
+                    <div class="activity-label">Блок 1</div>
+                    <div class="activity-details">Организация &mdash; понятны ли цели, хватило ли времени, что мешало</div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-label">Блок 2</div>
+                    <div class="activity-details">Стрельба &mdash; дистанция, оружие, ситуация (стрейф/стоя), ощущение, видео</div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-label">Блок 3</div>
+                    <div class="activity-details">Статы &mdash; оружие, вердикт (норма/слабо/сильно), конкретные параметры</div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-label">Блок 4</div>
+                    <div class="activity-details">Итог &mdash; 1&ndash;3 главных вывода, приоритет правок</div>
+                  </div>
+                </div>
+                <p style="margin-top:12px;font-size:0.88rem;color:var(--text-dim)">Рекомендуется Google Forms для масштабирования. Альтернатива &mdash; структурированные треды в Discord с обязательными полями.</p>
+              </div>
+            </details>
+          </section>
+
+          <!-- 02 ГЕЙМПЛЕЙ -->
+          <section id="section-gameplay">
+            <div class="section-head">
+              <span class="section-num">02</span>
+              <h2>Геймплейный фидбек &mdash; механика стрельбы</h2>
+            </div>
+
+            <div class="content-block">
+              <div class="content-block-title">Общее ощущение</div>
+              <p class="content-block-text">Стрельба ощущается как <strong>пластик</strong>. Разброс и его влияние по сравнению с периодом апрель&ndash;май 2026 ощущается лучше, но всё ещё <strong>непредсказуемым</strong>. Нет комплексности у механики &mdash; тесты проводятся без учёта модулей, обвесов и артефактов, что даёт неправильную модель оценки gun impact.</p>
+            </div>
+
+            <h3 class="subsection-title">Анализ по дистанциям</h3>
+
+            <div class="distance-grid">
+              <div class="distance-card">
+                <div class="distance-card-label">Ближняя (0&ndash;20 м)</div>
+                <div class="distance-card-status ok">Ожидаемо</div>
+                <p>Поведение оружия воспринимается нормально. Не было моментов, где в упоре оружие показало себя плохо. Но пул игровых ситуаций для тестов не охвачен.</p>
+              </div>
+              <div class="distance-card">
+                <div class="distance-card-label">Средняя (20&ndash;60 м)</div>
+                <div class="distance-card-status warn">Проблемы</div>
+                <p>Заметны проблемы с контролем и предсказуемостью отдачи. При стрейфах регистрация нестабильна &mdash; регает через раз.</p>
+              </div>
+              <div class="distance-card">
+                <div class="distance-card-label">Дальняя (60+ м)</div>
+                <div class="distance-card-status bad">Критично</div>
+                <p>Разброс ощущается как переменная рандома. Горизонтальная отдача усугубляет непредсказуемость. Контроль минимальный.</p>
+              </div>
+            </div>
+
+            <h3 class="subsection-title">Регистрация при стрейфах</h3>
+
+            <div class="callout-warning">
+              <div class="callout-warning-title">Зафиксированный баг-паттерн</div>
+              <p>У любого оружия при стрейфах на средней и дальней дистанции возникает ситуация, где попадания регистрируются <strong>через раз</strong>. Дело не в горизонтальной отдаче &mdash; проблема системная.</p>
+            </div>
+
+            <a class="link-card" href="https://drive.google.com/file/d/1_0Vd5ktfuFgkuxl7oDH59bOhU4Ithc1Y/view?usp=sharing" target="_blank" rel="noopener">
+              <div class="link-card-icon">VID</div>
+              <div class="link-card-body">
+                <strong>Пример от mad &mdash; регистрация при стрейфах</strong>
+                <span>drive.google.com &middot; видеодемонстрация момента</span>
+              </div>
+            </a>
+
+            <p>Аналогичный момент на дистанции во время стрейфов был и у автора отчёта.</p>
+
+            <a class="link-card" href="https://www.youtube.com/watch?v=_2EeEpcVa4I" target="_blank" rel="noopener">
+              <div class="link-card-icon">REF</div>
+              <div class="link-card-body">
+                <strong>Референс отдачи &mdash; период 2020 г.</strong>
+                <span>youtube.com &middot; пример нормальной механики отдачи</span>
+              </div>
+            </a>
+
+            <h3 class="subsection-title">Системные проблемы</h3>
+
+            <div class="factor">
+              <div class="factor-weight">01</div>
+              <div>
+                <div class="factor-name">Нет комплексности</div>
+                <p class="factor-desc">Механика тестируется изолированно. Нет учёта модулей, обвесов, артефактов &mdash; аспектов, которые сильно влияют на gun impact и юзабилити. Балансить оружие отдельно от обвесов &mdash; ошибка.</p>
+                <span class="factor-tag factor-tag--bad">Системная</span>
+              </div>
+            </div>
+
+            <div class="factor">
+              <div class="factor-weight">02</div>
+              <div>
+                <div class="factor-name">Нет пула обвесов</div>
+                <p class="factor-desc">Отсутствует нормальный пул обвесов и адекватные способы их получать на этапе теста. Сборки не тестировались &mdash; ТТК на синем снаряжении крайне высокий.</p>
+                <span class="factor-tag factor-tag--bad">Системная</span>
+              </div>
+            </div>
+
+            <div class="factor">
+              <div class="factor-weight">03</div>
+              <div>
+                <div class="factor-name">Одинаковые шаблоны оружия</div>
+                <p class="factor-desc">XM8 и G36C &mdash; по сути одинаковые оружия с чуть разными моделями, разделённые только модульностью. Нет чётких шаблонов с аналогами и своими особенностями.</p>
+                <span class="factor-tag factor-tag--bad">Баланс</span>
+              </div>
+            </div>
+
+            <h3 class="subsection-title">Сравнение: апрель&ndash;май vs июль 2026</h3>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Параметр</th>
+                    <th>Апр&ndash;Май 2026</th>
+                    <th>Июль 2026</th>
+                    <th>Оценка</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Разброс в прицеле</td>
+                    <td>Высокий</td>
+                    <td><span class="stat-new">Снижен</span></td>
+                    <td><span class="badge badge-good">Лучше</span></td>
+                  </tr>
+                  <tr>
+                    <td>Эффективная дистанция</td>
+                    <td>Низкая</td>
+                    <td><span class="stat-new">Улучшена</span></td>
+                    <td><span class="badge badge-good">Лучше</span></td>
+                  </tr>
+                  <tr>
+                    <td>Предсказуемость отдачи</td>
+                    <td>Низкая</td>
+                    <td>Низкая</td>
+                    <td><span class="badge badge-warn">Без изменений</span></td>
+                  </tr>
+                  <tr>
+                    <td>Регистрация при стрейфах</td>
+                    <td>Нестабильная</td>
+                    <td>Нестабильная</td>
+                    <td><span class="badge badge-bad">Не исправлено</span></td>
+                  </tr>
+                  <tr>
+                    <td>Горизонтальная отдача</td>
+                    <td>Есть</td>
+                    <td>Есть</td>
+                    <td><span class="badge badge-bad">Спорное решение</span></td>
+                  </tr>
+                  <tr>
+                    <td>ТТК (синее снаряжение)</td>
+                    <td>Высокий</td>
+                    <td>Очень высокий</td>
+                    <td><span class="badge badge-bad">Крайность</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="subsection-title">Что не нравится</h3>
+            <ul>
+              <li><strong>Разброс</strong> &mdash; на дистанции чувствуется переменная рандома со стрейфами, регой и механикой стрельбы в совокупности.</li>
+              <li><strong>Шаблоны оружия</strong> &mdash; XM8 и G36C не дифференцированы по роли, только по модели и модулям.</li>
+              <li><strong>ТТК</strong> &mdash; сильно различается между оружием. На синем снаряжении без сборок ТТК уходит в крайность. ММО-прогрессия оправдывает разницу, но не настолько.</li>
+            </ul>
+
+            <h3 class="subsection-title">Что понравилось</h3>
+
+            <div class="info-box info-box--success">
+              <div class="info-box-title">Позитивные изменения</div>
+              <ul class="info-box-text" style="margin-left:16px">
+                <li>Снижение разброса в прицеле &mdash; заметное улучшение по сравнению с апрелём&ndash;маем</li>
+                <li>Улучшение эффективной дистанции &mdash; оружие стало полезнее на средних дистанциях</li>
+              </ul>
+            </div>
+
+            <h3 class="subsection-title">Предложения по механике отдачи</h3>
+
+            <ol class="priority-list">
+              <li><strong>Разброс</strong> &mdash; подкрутить значения, уменьшить влияние рандома на дистанции.</li>
+              <li><strong>Модель отдачи</strong> &mdash; отказаться от горизонтальной модели. Вертикальная отдача с срезом, небольшие смещения в горизонталь, нормальная визуальная тряска.</li>
+              <li><strong>Система вкупе</strong> &mdash; сформировать чёткую систему оружия + обвесов + артефактов + стрельбы. Балансить комплексно, не по элементам.</li>
+              <li><strong>Регистрация</strong> &mdash; проверить и исправить приколы с регистрацией при стрейфах (приоритет).</li>
+            </ol>
+          </section>
+
+          <!-- 03 СТАТЫ -->
+          <section id="section-stats">
+            <div class="section-head">
+              <span class="section-num">03</span>
+              <h2>Фидбек по статам</h2>
+            </div>
+
+            <div class="content-block">
+              <div class="content-block-title">Контекст тестирования</div>
+              <p class="content-block-text">Все оружие тестировалось на <strong>синем снаряжении</strong> без обвесов и сборок. Это ограничивает выводы по ТТК и комплексному балансу, но позволяет сравнить базовые статы между аналогами.</p>
+            </div>
+
+            <h3 class="subsection-title">Сводная таблица</h3>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Оружие</th>
+                    <th>Макс. дист.</th>
+                    <th>Эфф. дист.</th>
+                    <th>Мин. дист.</th>
+                    <th>Разброс</th>
+                    <th>Вердикт</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>АК-105</strong></td>
+                    <td><span class="stat-old">140</span><span class="stat-arrow">&rarr;</span><span class="stat-new">125</span></td>
+                    <td><span class="stat-old">54</span><span class="stat-arrow">&rarr;</span><span class="stat-new">65</span></td>
+                    <td><span class="stat-old">10</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td>&mdash;</td>
+                    <td><span class="badge badge-ok">Норма</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>АН-94 &laquo;Абакан&raquo;</strong></td>
+                    <td><span class="stat-old">140</span><span class="stat-arrow">&rarr;</span><span class="stat-new">125</span></td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">12</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td><span class="stat-old">0.4</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.35</span></td>
+                    <td><span class="badge badge-ok">Норма</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>FN SCAR-L</strong></td>
+                    <td><span class="stat-old">135</span><span class="stat-arrow">&rarr;</span><span class="stat-new">125</span></td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">10</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td><span class="stat-old">0.4</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.35</span></td>
+                    <td><span class="badge badge-ok">Норма</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ОЦ-14-2А &laquo;Шторм&raquo;</strong></td>
+                    <td><span class="stat-old">135</span><span class="stat-arrow">&rarr;</span><span class="stat-new">120</span></td>
+                    <td><span class="stat-old">40</span><span class="stat-arrow">&rarr;</span><span class="stat-new">50</span></td>
+                    <td><span class="stat-old">7</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td><span class="stat-old">0.4</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.35</span></td>
+                    <td><span class="badge badge-good">Приятен</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>M4A1</strong></td>
+                    <td><span class="stat-old">130</span><span class="stat-arrow">&rarr;</span><span class="stat-new">120</span></td>
+                    <td><span class="stat-old">32</span><span class="stat-arrow">&rarr;</span><span class="stat-new">50</span></td>
+                    <td><span class="stat-old">11</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td><span class="stat-old">0.3</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.32</span></td>
+                    <td><span class="badge badge-good">Сильный</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>HK XM8</strong></td>
+                    <td><span class="stat-old">120</span><span class="stat-arrow">&rarr;</span><span class="stat-new">125</span></td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">9</span><span class="stat-arrow">&rarr;</span><span class="stat-new">20</span></td>
+                    <td><span class="stat-old">0.45</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.35</span></td>
+                    <td><span class="badge badge-neutral">Средний</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>HK G36C</strong></td>
+                    <td><span class="stat-old">140</span><span class="stat-arrow">&rarr;</span><span class="stat-new">130</span></td>
+                    <td><span class="stat-old">70</span><span class="stat-arrow">&rarr;</span><span class="stat-new">60</span></td>
+                    <td><span class="stat-old">12</span><span class="stat-arrow">&rarr;</span><span class="stat-new">25</span></td>
+                    <td><span class="stat-old">0.28</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.24</span></td>
+                    <td><span class="badge badge-good">Топ</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>FN SCAR-H</strong></td>
+                    <td><span class="stat-old">160</span><span class="stat-arrow">&rarr;</span><span class="stat-new">140</span></td>
+                    <td><span class="stat-old">62</span><span class="stat-arrow">&rarr;</span><span class="stat-new">75</span></td>
+                    <td><span class="stat-old">18</span><span class="stat-arrow">&rarr;</span><span class="stat-new">28</span></td>
+                    <td><span class="stat-old">0.28</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.22</span></td>
+                    <td><span class="badge badge-ok">Неплохо</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>СВ-98</strong></td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">0.2</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.15</span></td>
+                    <td><span class="badge badge-good">Ок</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>FN SCAR SSR</strong></td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">0.2</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.17</span></td>
+                    <td><span class="badge badge-bad">Неудачно</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Изделие No 62</strong></td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td><span class="stat-old">0.1</span><span class="stat-arrow">&rarr;</span><span class="stat-new">0.01</span></td>
+                    <td><span class="badge badge-bad">Критично</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="subsection-title">Детальный разбор по оружию</h3>
+
+            <h4>Штурмовые винтовки</h4>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">АК-105</span>
+                <span class="badge badge-ok">В пределах нормы</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">140</td><td class="stat-new">125</td></tr>
+                    <tr><td>Эффективная дистанция</td><td class="stat-old">54</td><td class="stat-new">65</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">10</td><td class="stat-new">20</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">В пределах нормы на фоне аналогов, играется терпимо. Замечаний нет.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">АН-94 &laquo;Абакан&raquo;</span>
+                <span class="badge badge-ok">В пределах нормы</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">140</td><td class="stat-new">125</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">12</td><td class="stat-new">20</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.4</td><td class="stat-new">0.35</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Не особо понравился на фоне аналогов. Рекомендация: поиграться с разбросом и статами комфорта.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">FN SCAR-L</span>
+                <span class="badge badge-ok">На уровне Абакана</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">135</td><td class="stat-new">125</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">10</td><td class="stat-new">20</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.4</td><td class="stat-new">0.35</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Стоит чуть поиграться с разбросом и статами комфорта. Позиционирование пересекается с Абаканом.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">ОЦ-14-2А &laquo;Шторм&raquo;</span>
+                <span class="badge badge-good">Очень приятен</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">135</td><td class="stat-new">120</td></tr>
+                    <tr><td>Эффективная дистанция</td><td class="stat-old">40</td><td class="stat-new">50</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">7</td><td class="stat-new">20</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.4</td><td class="stat-new">0.35</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">На фоне аналогов очень неплох. Стоит уровнять с остальными, чтобы не выбивался из линейки.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">M4A1</span>
+                <span class="badge badge-good">Лучше аналогов</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">130</td><td class="stat-new">120</td></tr>
+                    <tr><td>Эффективная дистанция</td><td class="stat-old">32</td><td class="stat-new">50</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">11</td><td class="stat-new">20</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.3</td><td class="stat-new">0.32</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Чуть сильнее Абакана и SCAR-L. Понравился, но возможно стоит чуть подрезать комфорт для баланса линейки.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">HK XM8</span>
+                <span class="badge badge-neutral">Средний</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">120</td><td class="stat-new">125</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">9</td><td class="stat-new">20</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.45</td><td class="stat-new">0.35</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Средний ган. Ничего плохого, но и хорошего тоже. Возможно стоит повысить комфорт. Пересекается с G36C по роли.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">HK G36C</span>
+                <span class="badge badge-good">Сверх приятный</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">140</td><td class="stat-new">130</td></tr>
+                    <tr><td>Эффективная дистанция</td><td class="stat-old">70</td><td class="stat-new">60</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">12</td><td class="stat-new">25</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.28</td><td class="stat-new">0.24</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Универсальный на большей части игровых дистанций. Лучший ган теста среди штурмовых.</p>
+            </div>
+
+            <h4>Боевая винтовка / DMR</h4>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">FN SCAR-H</span>
+                <span class="badge badge-ok">Неплохо</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Максимальная дистанция</td><td class="stat-old">160</td><td class="stat-new">140</td></tr>
+                    <tr><td>Эффективная дистанция</td><td class="stat-old">62</td><td class="stat-new">75</td></tr>
+                    <tr><td>Минимальная дистанция</td><td class="stat-old">18</td><td class="stat-new">28</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.28</td><td class="stat-new">0.22</td></tr>
+                    <tr><td>Вертикальная отдача</td><td class="stat-old">0.4</td><td class="stat-new">0.3</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Играется неплохо на фоне аналогов. Решение с горизонтальной отдачей спорное.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">FN SCAR SSR</span>
+                <span class="badge badge-bad">Неудачно</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Множитель урона по конечностям</td><td class="stat-old">0.8</td><td class="stat-new">1</td></tr>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.2</td><td class="stat-new">0.17</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">На стоковой пушке без обвесов крайне неудачно. Не рыба &mdash; не мясо: не хватает позиционирования ДМР среди автоматов и СНП.</p>
+            </div>
+
+            <h4>Снайперская винтовка</h4>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">СВ-98</span>
+                <span class="badge badge-good">Как надо</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.2</td><td class="stat-new">0.15</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note">Неплохо играется, трогать лишний раз не стоит.</p>
+            </div>
+
+            <div class="weapon-card">
+              <div class="weapon-card-header">
+                <span class="weapon-card-name">Изделие No 62</span>
+                <span class="badge badge-bad">Критично</span>
+              </div>
+              <div class="table-wrap" style="margin:0">
+                <table>
+                  <thead><tr><th>Параметр</th><th>Было</th><th>Стало</th></tr></thead>
+                  <tbody>
+                    <tr><td>Разброс в прицеле</td><td class="stat-old">0.1</td><td class="stat-new">0.01</td></tr>
+                    <tr><td>Разброс от бедра</td><td class="stat-old">3.1</td><td class="stat-new">0.8</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="weapon-note"><strong>Разброс уберите &mdash; это психопатия.</strong> Требует немедленного пересмотра значений.</p>
+            </div>
+
+            <h3 class="subsection-title">Кровотечение</h3>
+
+            <div class="info-box info-box--success">
+              <div class="info-box-title">Общая оценка</div>
+              <p class="info-box-text">Изменения кровотечения улучшили в целом ощущение от игры. Нет токсичных дебафов, всё в пределах разумного.</p>
+            </div>
+
+            <h4>Порог активации</h4>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Уровень</th><th>Было</th><th>Стало</th><th>Изменение</th></tr></thead>
+                <tbody>
+                  <tr><td>Уровень 1</td><td class="stat-old">0</td><td class="stat-new">0.1</td><td>Раньше не активировалось</td></tr>
+                  <tr><td>Уровень 2</td><td class="stat-old">5</td><td class="stat-new">3</td><td>Порог снижен</td></tr>
+                  <tr><td>Уровень 3</td><td class="stat-old">10</td><td class="stat-new">8</td><td>Порог снижен</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Урон</h4>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Уровень</th><th>Было</th><th>Стало</th><th>Изменение</th></tr></thead>
+                <tbody>
+                  <tr><td>Уровень 1</td><td class="stat-old">0</td><td class="stat-new">0.25</td><td>Добавлен урон</td></tr>
+                  <tr><td>Уровень 2</td><td class="stat-old">1</td><td class="stat-new">0.5</td><td>Урон снижен</td></tr>
+                  <tr><td>Уровень 3</td><td class="stat-old">1.8</td><td class="stat-new">1.2</td><td>Урон снижен</td></tr>
+                  <tr><td>Уровень 4</td><td class="stat-old">3</td><td class="stat-new">3.3</td><td>Незначительный рост</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 04 ИТОГ -->
+          <section id="section-summary">
+            <div class="section-head">
+              <span class="section-num">04</span>
+              <h2>Итог по сегодняшнему дню</h2>
+            </div>
+
+            <div class="info-box info-box--danger">
+              <div class="info-box-title">Главный вывод</div>
+              <p class="info-box-text">Тесту не хватает более жёсткой структуры и понятных целей. Необходимо нормально организовать фокус-группу и ввести чёткий регламент &mdash; без этого развиваться дальше в адекватном ключе просто невозможно.</p>
+            </div>
+
+            <h3 class="subsection-title">Приоритетные действия</h3>
+
+            <ol class="priority-list">
+              <li><strong>Регламент ФГ</strong> &mdash; ввести шаблон отчёта, цели и расписание до каждого плейтеста.</li>
+              <li><strong>Регистрация при стрейфах</strong> &mdash; проверить и исправить (видео от mad + повтор у автора).</li>
+              <li><strong>Изделие No 62</strong> &mdash; пересмотреть разброс (0.01 в прицеле &mdash; критично).</li>
+              <li><strong>Модель отдачи</strong> &mdash; уйти от горизонтальной модели к вертикальной с срезом.</li>
+              <li><strong>Комплексный баланс</strong> &mdash; тестировать оружие вместе с обвесами и сборками.</li>
+              <li><strong>SCAR SSR</strong> &mdash; определить позиционирование ДМР, сейчас не рыба &mdash; не мясо.</li>
+            </ol>
+
+            <h3 class="subsection-title">Рекомендации для следующего плейтеста</h3>
+
+            <ul class="checklist">
+              <li><span class="check-icon check-icon--warn">!</span><span>Опубликовать цели и сценарии за 24 часа до старта</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Выдать участникам пул обвесов для теста сборок</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Обязательные сценарии: стрейф 30/50 м, стоя 30/50/80 м, упор</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Единый формат фидбека (Google Forms или Discord-шаблон)</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Собирать фидбек по стрельбе и статам в одинаковом формате</span></li>
+              <li><span class="check-icon check-icon--warn">!</span><span>Охватывать все элементы механики в разных игровых ситуациях</span></li>
+            </ul>
+
+            <div class="content-block">
+              <div class="content-block-title">Формат следующего отчёта</div>
+              <p class="content-block-text">Каждый участник заполняет шаблон из 4 блоков (организация, стрельба, статы, итог). Модератор ФГ сводит отчёты в единый документ по структуре этого архива. Это позволит сравнивать плейтесты между собой и отслеживать прогресс правок.</p>
+            </div>
+          </section>
+        </main>
       </div>
-
-      <h3>Что мешает тесту</h3>
-      <ul>
-        <li>Отсутствие чётких рамок и сценариев, а также слабый регламент внутри фокус-группы.</li>
-        <li>Часть участников воспринимает плейтест как обычный ивент без чётких рамок и понимания ценности фидбека. Без шаблонности регламентов этот фидбек воспринимается на уровне плинтуса.</li>
-      </ul>
-
-      <h3>Что улучшить</h3>
-      <div class="block block--improve">
-        <p class="block__label">Рекомендации</p>
-        <ul>
-          <li>Публиковать перед стартом короткий список приоритетных целей теста, расписание и чёткое определение рабочего процесса.</li>
-          <li>Добавить простой шаблон отчёта прямо в анонс или закреплённый пост. Рекомендуется Google Forms (в ФГ ск в основном дают фидбек в этом формате, т.к. масштабировать проще), либо создать правильную структуру для фидбека внутри Discord.</li>
-        </ul>
-      </div>
-
-      <!-- БЛОК 2: ГЕЙМПЛЕЙ -->
-      <h2 id="gameplay">Геймплейный фидбек — механика стрельбы</h2>
-
-      <h3>Общее ощущение</h3>
-      <ul>
-        <li>Стрельба ощущается как пластик. Разброс и его влияние по сравнению с моментом в апреле–мае ощущается лучше, но всё ещё непредсказуемым.</li>
-        <li>На ближней дистанции поведение оружия воспринимается как ожидаемое — не было моментов, где в упоре оружие себя показало плохо, но опять же мы не охватываем нормальный пул игровых ситуаций для тестов.</li>
-        <li>На средней и дальней дистанции заметны проблемы с контролем и предсказуемостью отдачи. Дело не в горизонталке — у любого оружия при стрейфах возникает ситуация, где регает через раз.</li>
-      </ul>
-
-      <p>Пример момента от mad:</p>
-      <a class="link-card" href="https://drive.google.com/file/d/1_0Vd5ktfuFgkuxl7oDH59bOhU4Ithc1Y/view?usp=sharing" target="_blank" rel="noopener">Видео — регистрация при стрейфах</a>
-
-      <p>Похожий момент на дистанции во время стрейфов был и у автора отчёта.</p>
-
-      <p>Пример нормальной механики отдачи (период 2020 г.):</p>
-      <a class="link-card" href="https://www.youtube.com/watch?v=_2EeEpcVa4I" target="_blank" rel="noopener">YouTube — референс отдачи</a>
-
-      <div class="block block--issue">
-        <p class="block__label">Системные проблемы</p>
-        <ul>
-          <li>Нет комплексности у механики — неправильная модель тех же тестов, нет учёта модулей и других аспектов, которые сильно влияют на gun impact и его юзабилити.</li>
-          <li>Проблема в отсутствии нормального пула обвесов и адекватных способов их получать. Балансить оружие отдельно от обвесов — ошибка.</li>
-          <li>Перечислять ошибки системы оружия и стрельбы можно бесконечно, и это сильно выходит за рамки теста.</li>
-        </ul>
-      </div>
-
-      <h3>Что не нравится в стрельбе</h3>
-      <ul>
-        <li><strong>Разброс</strong> — в некоторых моментах на дистанции чувствуется переменная рандома со стрейфами, регой и вышеупомянутым элементом механики стрельбы.</li>
-        <li><strong>Шаблоны оружия</strong> — нет чётких и понятных шаблонов с аналогами и своими особенностями. XM8 и G36 — по сути одинаковые оружия с чуть разными моделями, лишь разделённые модульностью.</li>
-        <li><strong>ТТК</strong> — в общих рамках сильно различается. Это нормально из-за ММО-прогрессии, но не должно уходить в крайность. На этапе тестирования на синем снаряжении ТТК очень высокий, а сборки и обвесы ещё не трогали. Строим систему, а не её элемент — в балансе главный аспект комплексность.</li>
-      </ul>
-
-      <h3>Что понравилось</h3>
-      <div class="block block--improve">
-        <p class="block__label">Плюсы</p>
-        <ul>
-          <li>Снижение разброса в прицеле</li>
-          <li>Улучшение эффективности дистанции</li>
-        </ul>
-      </div>
-
-      <h3>Предложения по механике отдачи</h3>
-      <div class="block block--neutral">
-        <p class="block__label">Предложения</p>
-        <ul>
-          <li>Подкрутить разброс, отказаться от горизонтальной модели отдачи. Смотреть в сторону вертикальной с срезом, с небольшими смещениями в горизонталь и уменьшением разброса в прицеле с нормальной визуальной отдачей в виде тряски.</li>
-          <li>Сформировать чёткую систему оружия, обвесов, артефактов и стрельбы. Задуматься, как система выглядит вкупе, а не по элементам.</li>
-          <li>Проверить приколы с регистрацией при стрейфах.</li>
-        </ul>
-      </div>
-
-      <!-- БЛОК 3: СТАТЫ -->
-      <h2 id="stats">Фидбек по статам</h2>
-
-      <h3>Баланс оружия</h3>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">АК-105</h4>
-          <span class="weapon-card__verdict verdict--ok">В пределах нормы</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">140</span><span class="arrow">→</span><span class="new">125</span></td></tr>
-            <tr><td>Эффективная дистанция</td><td class="stat-change"><span class="old">54</span><span class="arrow">→</span><span class="new">65</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">10</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">В пределах нормы, нет замечаний на фоне аналогов, играется терпимо.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">АН-94 «Абакан»</h4>
-          <span class="weapon-card__verdict verdict--ok">В пределах нормы</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">140</span><span class="arrow">→</span><span class="new">125</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">12</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.4</span><span class="arrow">→</span><span class="new">0.35</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Не особо понравился на фоне аналогов, возможно стоит чуть поиграться с разбросом и статами комфорта.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">FN SCAR-L</h4>
-          <span class="weapon-card__verdict verdict--ok">На уровне Абакана</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">135</span><span class="arrow">→</span><span class="new">125</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">10</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.4</span><span class="arrow">→</span><span class="new">0.35</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Стоит чуть поиграться с разбросом, статами комфорта.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">ОЦ-14-2А «Шторм»</h4>
-          <span class="weapon-card__verdict verdict--good">Очень приятен</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">135</span><span class="arrow">→</span><span class="new">120</span></td></tr>
-            <tr><td>Эффективная дистанция</td><td class="stat-change"><span class="old">40</span><span class="arrow">→</span><span class="new">50</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">7</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.4</span><span class="arrow">→</span><span class="new">0.35</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">На фоне аналогов очень неплох, стоит уровнять с остальными.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">M4A1</h4>
-          <span class="weapon-card__verdict verdict--good">Лучше аналогов</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">130</span><span class="arrow">→</span><span class="new">120</span></td></tr>
-            <tr><td>Эффективная дистанция</td><td class="stat-change"><span class="old">32</span><span class="arrow">→</span><span class="new">50</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">11</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.3</span><span class="arrow">→</span><span class="new">0.32</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Чуть сильнее Абакана и SCAR-L, понравился. Возможно стоит чуть подрезать комфорт.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">HK XM8</h4>
-          <span class="weapon-card__verdict verdict--neutral">Средний</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">120</span><span class="arrow">→</span><span class="new">125</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">9</span><span class="arrow">→</span><span class="new">20</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.45</span><span class="arrow">→</span><span class="new">0.35</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Средний ган на фоне аналогов. Возможно стоит повысить комфорт ещё сильнее.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">HK G36C</h4>
-          <span class="weapon-card__verdict verdict--good">Сверх приятный</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">140</span><span class="arrow">→</span><span class="new">130</span></td></tr>
-            <tr><td>Эффективная дистанция</td><td class="stat-change"><span class="old">70</span><span class="arrow">→</span><span class="new">60</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">12</span><span class="arrow">→</span><span class="new">25</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.28</span><span class="arrow">→</span><span class="new">0.24</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Универсальный на большей части игровых дистанций.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">FN SCAR-H</h4>
-          <span class="weapon-card__verdict verdict--ok">Неплохо</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Максимальная дистанция</td><td class="stat-change"><span class="old">160</span><span class="arrow">→</span><span class="new">140</span></td></tr>
-            <tr><td>Эффективная дистанция</td><td class="stat-change"><span class="old">62</span><span class="arrow">→</span><span class="new">75</span></td></tr>
-            <tr><td>Минимальная дистанция</td><td class="stat-change"><span class="old">18</span><span class="arrow">→</span><span class="new">28</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.28</span><span class="arrow">→</span><span class="new">0.22</span></td></tr>
-            <tr><td>Вертикальная отдача</td><td class="stat-change"><span class="old">0.4</span><span class="arrow">→</span><span class="new">0.3</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Играется неплохо, решение с горизонталкой спорное.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">СВ-98</h4>
-          <span class="weapon-card__verdict verdict--good">Как надо</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.2</span><span class="arrow">→</span><span class="new">0.15</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Неплохо играется, трогать лишний раз не стоит.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">FN SCAR SSR</h4>
-          <span class="weapon-card__verdict verdict--bad">Неудачно</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Множитель урона по конечностям</td><td class="stat-change"><span class="old">0.8</span><span class="arrow">→</span><span class="new">1</span></td></tr>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.2</span><span class="arrow">→</span><span class="new">0.17</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">На стоковой пушке без обвесов крайне неудачно. Не рыба — не мясо, не хватает позиционирования ДМР среди автоматов и СНП.</p>
-      </div>
-
-      <div class="weapon-card">
-        <div class="weapon-card__header">
-          <h4 class="weapon-card__name">Изделие No 62</h4>
-          <span class="weapon-card__verdict verdict--bad">Критично</span>
-        </div>
-        <table class="weapon-table">
-          <thead><tr><th>Параметр</th><th>Изменение</th></tr></thead>
-          <tbody>
-            <tr><td>Разброс в прицеле</td><td class="stat-change"><span class="old">0.1</span><span class="arrow">→</span><span class="new">0.01</span></td></tr>
-            <tr><td>Разброс от бедра</td><td class="stat-change"><span class="old">3.1</span><span class="arrow">→</span><span class="new">0.8</span></td></tr>
-          </tbody>
-        </table>
-        <p class="weapon-note">Разброс уберите — это психопатия.</p>
-      </div>
-
-      <h3>Кровотечение</h3>
-
-      <h4>Порог активации</h4>
-      <div class="weapon-table-wrap">
-        <table class="weapon-table">
-          <thead>
-            <tr><th>Уровень</th><th>Было</th><th>Стало</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Уровень 1</td><td class="stat-change"><span class="old">0</span></td><td class="stat-change"><span class="new">0.1</span></td></tr>
-            <tr><td>Уровень 2</td><td class="stat-change"><span class="old">5</span></td><td class="stat-change"><span class="new">3</span></td></tr>
-            <tr><td>Уровень 3</td><td class="stat-change"><span class="old">10</span></td><td class="stat-change"><span class="new">8</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>Урон</h4>
-      <div class="weapon-table-wrap">
-        <table class="weapon-table">
-          <thead>
-            <tr><th>Уровень</th><th>Было</th><th>Стало</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Уровень 1</td><td class="stat-change"><span class="old">0</span></td><td class="stat-change"><span class="new">0.25</span></td></tr>
-            <tr><td>Уровень 2</td><td class="stat-change"><span class="old">1</span></td><td class="stat-change"><span class="new">0.5</span></td></tr>
-            <tr><td>Уровень 3</td><td class="stat-change"><span class="old">1.8</span></td><td class="stat-change"><span class="new">1.2</span></td></tr>
-            <tr><td>Уровень 4</td><td class="stat-change"><span class="old">3</span></td><td class="stat-change"><span class="new">3.3</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="block block--improve">
-        <p class="block__label">Ощущения</p>
-        <p>Изменения кровотечения улучшили в целом ощущение от игры. Нет токсичных дебафов, всё находится в пределах разумного.</p>
-      </div>
-
-      <!-- БЛОК 4: ИТОГ -->
-      <h2 id="summary">Итог по сегодняшнему дню</h2>
-
-      <div class="summary-box">
-        <ul>
-          <li>Тесту не хватает более жёсткой структуры и понятных целей. Необходимо нормально организовать фокус-группу и ввести чёткий регламент — без этого развиваться дальше в адекватном ключе просто невозможно.</li>
-          <li>По стрельбе и статам лучше собирать фидбек в одинаковом формате и охватывать все элементы механики в разных сценариях и разных игровых ситуациях.</li>
-        </ul>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <a href="../index.html">← Все статьи</a> · Feedback Hub
-  </footer>
+    </div>
+  </div>
 
   <script src="../js/main.js"></script>
 </body>

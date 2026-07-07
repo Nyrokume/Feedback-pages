@@ -3,53 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback Hub — Фидбек и отчёты плейтестов</title>
-  <meta name="description" content="Архив фидбека по плейтестам: организация, геймплей, баланс оружия и статов.">
+  <title>Feedback Hub — Архив плейтестов</title>
+  <meta name="description" content="Структурированный архив фидбека по плейтестам: организация, геймплей, баланс оружия и статов.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-logo" href="index.html">Feedback Hub</a>
-      <nav class="site-nav">
-        <a href="index.html" class="is-active">Статьи</a>
-        <a href="articles/2026-07-07-playtest-raider.html">Последний отчёт</a>
-      </nav>
-    </div>
-  </header>
+  <button class="menu-toggle" id="menuToggle" aria-label="Меню">&#9776; Меню</button>
 
-  <main class="page">
-    <section class="hero">
-      <p class="section-label">Архив</p>
-      <h1 class="hero__title">Фидбек и отчёты плейтестов</h1>
-      <p class="hero__meta">
-        Структурированные отчёты по организации тестов, геймплею и балансу.
-        Каждая статья разбита на блоки: организация, стрельба, статы, итог.
-      </p>
-    </section>
-
-    <section>
-      <p class="section-label">Все статьи</p>
-      <div id="article-list" class="article-list">
-        <a class="article-card" href="articles/2026-07-07-playtest-raider.html">
-          <h2 class="article-card__title">Плейтест — 07.07.2026</h2>
-          <p class="article-card__summary">Фидбек по организации плейтеста, механике стрельбы и балансу оружия. Предложения по регламенту, отдаче и статам.</p>
-          <div class="article-card__footer">
-            <span class="article-card__date">7 июля 2026 г.</span>
-            <span class="article-card__date">Raider</span>
-            <span class="tag tag--blue">плейтест</span>
-            <span class="tag tag--yellow">стрельба</span>
-            <span class="tag tag--green">баланс</span>
-            <span class="tag tag--red">организация</span>
-          </div>
-        </a>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="brand-title">Feedback Hub</div>
+        <div class="brand-sub">Playtest Archive</div>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    Feedback Hub — внутренний архив отчётов плейтестов.
-  </footer>
+      <div class="nav-label">Навигация</div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active"><span class="nav-num">00</span> Все статьи</a>
+        <a href="articles/2026-07-07-playtest-raider.html" class="nav-link"><span class="nav-num">01</span> 07.07.2026</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Архив структурированного фидбека по плейтестам. Каждый отчёт разбит на блоки: организация, геймплей, статы, итог.</p>
+        <p class="copy">&copy; Raider &middot; 2026</p>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="main-inner">
+        <header class="hero">
+          <div class="hero-badge">Архив отчётов &middot; v1.0</div>
+          <h1>Фидбек и отчёты плейтестов</h1>
+          <p class="hero-sub">Структурированные отчёты по организации тестов, механике стрельбы и балансу оружия. Каждая статья содержит чёткие блоки с выводами, таблицами статов и рекомендациями для следующих итераций.</p>
+        </header>
+
+        <section>
+          <div class="section-head">
+            <span class="section-num">00</span>
+            <h2>Все отчёты</h2>
+          </div>
+
+          <div id="article-list" class="article-grid">
+            <a class="article-card" href="articles/2026-07-07-playtest-raider.html">
+              <h2>Плейтест &mdash; 07.07.2026</h2>
+              <p>Фидбек по организации плейтеста, механике стрельбы и балансу оружия. Предложения по регламенту, отдаче, обвесам и статам 11 единиц вооружения.</p>
+              <div class="article-card-footer">
+                <span class="article-date">7 июля 2026</span>
+                <span class="article-date">Raider</span>
+                <span class="badge badge-ok">плейтест</span>
+                <span class="badge badge-warn">стрельба</span>
+                <span class="badge badge-good">баланс</span>
+                <span class="badge badge-bad">организация</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <span class="section-num">&mdash;</span>
+            <h2>Структура отчёта</h2>
+          </div>
+
+          <div class="factor">
+            <div class="factor-weight">01</div>
+            <div>
+              <div class="factor-name">Организация</div>
+              <p class="factor-desc">Цели теста, регламент фокус-группы, шаблоны сбора фидбека, чеклист подготовки к плейтесту.</p>
+            </div>
+          </div>
+
+          <div class="factor">
+            <div class="factor-weight">02</div>
+            <div>
+              <div class="factor-name">Геймплей</div>
+              <p class="factor-desc">Механика стрельбы, отдача, разброс, регистрация при стрейфах, сравнение по дистанциям и референсы.</p>
+            </div>
+          </div>
+
+          <div class="factor">
+            <div class="factor-weight">03</div>
+            <div>
+              <div class="factor-name">Статы</div>
+              <p class="factor-desc">Таблицы изменений по оружию, вердикты, баланс кровотечения, сводная таблица всех правок.</p>
+            </div>
+          </div>
+
+          <div class="factor">
+            <div class="factor-weight">04</div>
+            <div>
+              <div class="factor-name">Итог</div>
+              <p class="factor-desc">Приоритетные действия, рекомендации для следующего плейтеста, формат единого шаблона отчёта.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

@@ -1,84 +1,87 @@
-async function loadArticles() {
-  const response = await fetch('data/articles.json');
-  if (!response.ok) throw new Error('Не удалось загрузить список статей');
-  return response.json();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollSpy();
+  initMobileMenu();
+  loadArticleList();
+});
 
-function formatDate(dateStr) {
-  const date = new Date(dateStr + 'T00:00:00');
-  return date.toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-}
-
-function tagClass(tag) {
-  const map = {
-    организация: 'red',
-    плейтест: 'blue',
-    стрельба: 'yellow',
-    баланс: 'green',
-  };
-  return map[tag] || 'blue';
-}
-
-function renderArticleList(articles, container) {
-  if (!articles.length) {
-    container.innerHTML = '<p class="hero__meta">Статей пока нет.</p>';
-    return;
-  }
-
-  container.innerHTML = articles
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .map(
-      (article) => `
-      <a class="article-card" href="articles/${article.id}.html">
-        <h2 class="article-card__title">${article.title}</h2>
-        <p class="article-card__summary">${article.summary}</p>
-        <div class="article-card__footer">
-          <span class="article-card__date">${formatDate(article.date)}</span>
-          <span class="article-card__date">${article.author}</span>
-          ${article.tags.map((t) => `<span class="tag tag--${tagClass(t)}">${t}</span>`).join('')}
-        </div>
-      </a>
-    `
-    )
-    .join('');
-}
-
-function initToc() {
-  const tocLinks = document.querySelectorAll('.toc a');
-  const sections = document.querySelectorAll('.article-content h2[id]');
-  if (!tocLinks.length || !sections.length) return;
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[data-section]');
+  if (!sections.length || !navLinks.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          tocLinks.forEach((link) => {
-            link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.dataset.section === entry.target.id);
           });
         }
       });
     },
-    { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    { rootMargin: '-20% 0px -60% 0px' }
   );
 
   sections.forEach((section) => observer.observe(section));
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const listEl = document.getElementById('article-list');
-  if (listEl) {
-    try {
-      const articles = await loadArticles();
-      renderArticleList(articles, listEl);
-    } catch (err) {
-      listEl.innerHTML = `<p class="hero__meta">${err.message}</p>`;
-    }
-  }
+function initMobileMenu() {
+  const toggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  if (!toggle || !sidebar) return;
 
-  initToc();
-});
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+}
+
+async function loadArticleList() {
+  const container = document.getElementById('article-list');
+  if (!container) return;
+
+  try {
+    const response = await fetch('data/articles.json');
+    if (!response.ok) return;
+    const articles = await response.json();
+
+    container.innerHTML = articles
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .map((article) => renderArticleCard(article))
+      .join('');
+  } catch {
+    /* fallback cards already in HTML */
+  }
+}
+
+function renderArticleCard(article) {
+  const date = new Date(article.date + 'T00:00:00').toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const tagMap = {
+    организация: 'badge-bad',
+    плейтест: 'badge-ok',
+    стрельба: 'badge-warn',
+    баланс: 'badge-good',
+  };
+
+  const tags = article.tags
+    .map((t) => `<span class="badge ${tagMap[t] || 'badge-neutral'}">${t}</span>`)
+    .join('');
+
+  return `
+    <a class="article-card" href="articles/${article.id}.html">
+      <h2>${article.title}</h2>
+      <p>${article.summary}</p>
+      <div class="article-card-footer">
+        <span class="article-date">${date}</span>
+        <span class="article-date">${article.author}</span>
+        ${tags}
+      </div>
+    </a>
+  `;
+}
