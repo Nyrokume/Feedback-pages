@@ -16,55 +16,74 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-icon" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </div>
-        <div class="brand-title">Feedback Hub</div>
-        <div class="brand-sub">07.07.2026 &middot; Raider</div>
+        <a class="brand-link" href="../index.html">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="brand-title">Feedback Hub</div>
+          <div class="brand-sub">Playtest Archive</div>
+        </a>
       </div>
 
-      <div class="nav-label">Содержание</div>
-      <nav class="nav-links">
-        <a href="../index.html" class="nav-link"><span class="nav-num">&larr;</span> Все статьи</a>
-        <a href="#section-organization" class="nav-link" data-section="section-organization"><span class="nav-num">01</span> Организация</a>
-        <a href="#section-gameplay" class="nav-link" data-section="section-gameplay"><span class="nav-num">02</span> Стрельба</a>
-        <a href="#section-stats" class="nav-link" data-section="section-stats"><span class="nav-num">03</span> Статы</a>
-        <a href="#section-summary" class="nav-link" data-section="section-summary"><span class="nav-num">04</span> Итог</a>
-      </nav>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Разделы</div>
+        <nav class="nav-links" style="padding:0">
+          <a href="../index.html" class="nav-link nav-link--back">&larr; Все статьи</a>
+          <a href="#section-organization" class="nav-link" data-section="section-organization">Организация</a>
+          <a href="#section-gameplay" class="nav-link" data-section="section-gameplay">Стрельба</a>
+          <a href="#section-stats" class="nav-link" data-section="section-stats">Статы</a>
+          <a href="#section-summary" class="nav-link" data-section="section-summary">Итог</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-label">Теги</div>
+        <div class="tags">
+          <span class="tag tag--playtest">плейтест</span>
+          <span class="tag tag--shooting">стрельба</span>
+          <span class="tag tag--balance">баланс</span>
+          <span class="tag tag--org">организация</span>
+        </div>
+      </div>
 
       <div class="sidebar-footer">
-        <p>Отчёт плейтеста от 07.07.2026. Охват: организация ФГ, механика стрельбы, 11 единиц оружия, кровотечение.</p>
-        <p class="copy">&copy; Raider &middot; 2026</p>
+        <div class="sidebar-meta">
+          <span>7 июля 2026</span>
+          <span>Raider</span>
+        </div>
+        <p class="copy" style="margin-top:12px">&copy; 2026</p>
       </div>
     </aside>
 
     <div class="main">
       <div class="main-inner">
-        <header class="hero">
-          <div class="hero-badge">Плейтест &middot; 07.07.2026</div>
-          <h1>Плейтест &mdash; 07.07.2026</h1>
-          <p class="hero-sub">Полный отчёт по организации плейтеста, механике стрельбы и балансу оружия. Включает претензии к процессу тестирования, анализ отдачи по дистанциям, таблицы статов и рекомендации для следующей итерации.</p>
-          <div class="hero-meta">
-            <span class="badge badge-ok">плейтест</span>
-            <span class="badge badge-warn">стрельба</span>
-            <span class="badge badge-good">баланс</span>
-            <span class="badge badge-bad">организация</span>
-            <span class="article-date">Автор: Raider</span>
+        <nav class="breadcrumb" aria-label="Навигация">
+          <a href="../index.html">Статьи</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Плейтест — 07.07.2026</span>
+        </nav>
+
+        <header class="article-header">
+          <h1>Плейтест — 07.07.2026</h1>
+          <p class="article-lead">Полный отчёт по организации плейтеста, механике стрельбы и балансу оружия. Претензии к процессу тестирования, анализ отдачи по дистанциям, таблицы статов и рекомендации.</p>
+          <div class="article-meta">
+            <span class="article-meta-item">7 июля 2026</span>
+            <span class="article-meta-item">Raider</span>
+            <span class="tag tag--playtest">плейтест</span>
+            <span class="tag tag--shooting">стрельба</span>
+            <span class="tag tag--balance">баланс</span>
+            <span class="tag tag--org">организация</span>
           </div>
         </header>
 
-        <main>
-          <!-- 01 ОРГАНИЗАЦИЯ -->
+        <div class="article-body">
           <section id="section-organization">
-            <div class="section-head">
-              <span class="section-num">01</span>
-              <h2>Притензии к организации плейтестов</h2>
-            </div>
+            <h2 class="section-title">Притензии к организации плейтестов</h2>
 
             <div class="content-block">
               <div class="content-block-title">Контекст</div>
@@ -88,7 +107,7 @@
             <h3 class="subsection-title">Что мешает тесту</h3>
 
             <div class="factor">
-              <div class="factor-weight">A</div>
+              <div class="factor-label">A</div>
               <div>
                 <div class="factor-name">Отсутствие рамок</div>
                 <p class="factor-desc">Нет чётких сценариев и слабый регламент внутри фокус-группы. Участники не понимают границы теста и критерии оценки.</p>
@@ -97,7 +116,7 @@
             </div>
 
             <div class="factor">
-              <div class="factor-weight">B</div>
+              <div class="factor-label">B</div>
               <div>
                 <div class="factor-name">Восприятие как ивента</div>
                 <p class="factor-desc">Часть участников воспринимает плейтест как обычный ивент без понимания ценности фидбека. Без шаблонности регламентов замечания воспринимаются на уровне плинтуса.</p>
@@ -173,10 +192,7 @@
 
           <!-- 02 ГЕЙМПЛЕЙ -->
           <section id="section-gameplay">
-            <div class="section-head">
-              <span class="section-num">02</span>
-              <h2>Геймплейный фидбек &mdash; механика стрельбы</h2>
-            </div>
+            <h2 class="section-title">Геймплейный фидбек — механика стрельбы</h2>
 
             <div class="content-block">
               <div class="content-block-title">Общее ощущение</div>
@@ -231,7 +247,7 @@
             <h3 class="subsection-title">Системные проблемы</h3>
 
             <div class="factor">
-              <div class="factor-weight">01</div>
+              <div class="factor-label">01</div>
               <div>
                 <div class="factor-name">Нет комплексности</div>
                 <p class="factor-desc">Механика тестируется изолированно. Нет учёта модулей, обвесов, артефактов &mdash; аспектов, которые сильно влияют на gun impact и юзабилити. Балансить оружие отдельно от обвесов &mdash; ошибка.</p>
@@ -240,7 +256,7 @@
             </div>
 
             <div class="factor">
-              <div class="factor-weight">02</div>
+              <div class="factor-label">02</div>
               <div>
                 <div class="factor-name">Нет пула обвесов</div>
                 <p class="factor-desc">Отсутствует нормальный пул обвесов и адекватные способы их получать на этапе теста. Сборки не тестировались &mdash; ТТК на синем снаряжении крайне высокий.</p>
@@ -249,7 +265,7 @@
             </div>
 
             <div class="factor">
-              <div class="factor-weight">03</div>
+              <div class="factor-label">03</div>
               <div>
                 <div class="factor-name">Одинаковые шаблоны оружия</div>
                 <p class="factor-desc">XM8 и G36C &mdash; по сути одинаковые оружия с чуть разными моделями, разделённые только модульностью. Нет чётких шаблонов с аналогами и своими особенностями.</p>
@@ -339,10 +355,7 @@
 
           <!-- 03 СТАТЫ -->
           <section id="section-stats">
-            <div class="section-head">
-              <span class="section-num">03</span>
-              <h2>Фидбек по статам</h2>
-            </div>
+            <h2 class="section-title">Фидбек по статам</h2>
 
             <div class="content-block">
               <div class="content-block-title">Контекст тестирования</div>
@@ -698,10 +711,7 @@
 
           <!-- 04 ИТОГ -->
           <section id="section-summary">
-            <div class="section-head">
-              <span class="section-num">04</span>
-              <h2>Итог по сегодняшнему дню</h2>
-            </div>
+            <h2 class="section-title">Итог по сегодняшнему дню</h2>
 
             <div class="info-box info-box--danger">
               <div class="info-box-title">Главный вывод</div>
@@ -735,7 +745,7 @@
               <p class="content-block-text">Каждый участник заполняет шаблон из 4 блоков (организация, стрельба, статы, итог). Модератор ФГ сводит отчёты в единый документ по структуре этого архива. Это позволит сравнивать плейтесты между собой и отслеживать прогресс правок.</p>
             </div>
           </section>
-        </main>
+        </div>
       </div>
     </div>
   </div>

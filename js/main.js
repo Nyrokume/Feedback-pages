@@ -1,7 +1,14 @@
+const TAG_MAP = {
+  плейтест: { class: 'tag--playtest', badge: 'badge-ok' },
+  стрельба: { class: 'tag--shooting', badge: 'badge-warn' },
+  баланс: { class: 'tag--balance', badge: 'badge-good' },
+  организация: { class: 'tag--org', badge: 'badge-bad' },
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initMobileMenu();
-  loadArticleList();
+  initHub();
 });
 
 function initScrollSpy() {
@@ -37,51 +44,152 @@ function initMobileMenu() {
   });
 }
 
-async function loadArticleList() {
-  const container = document.getElementById('article-list');
-  if (!container) return;
+async function initHub() {
+  const listEl = document.getElementById('article-list');
+  if (!listEl) return;
 
+  let articles = [];
   try {
     const response = await fetch('data/articles.json');
-    if (!response.ok) return;
-    const articles = await response.json();
-
-    container.innerHTML = articles
-      .sort((a, b) => b.date.localeCompare(a.date))
-      .map((article) => renderArticleCard(article))
-      .join('');
+    if (response.ok) articles = await response.json();
   } catch {
-    /* fallback cards already in HTML */
+    return;
   }
+
+  articles.sort((a, b) => b.date.localeCompare(a.date));
+
+  const allTags = [...new Set(articles.flatMap((a) => a.tags))];
+  renderTagFilters(allTags);
+  renderSidebarArticles(articles);
+  renderArticleGrid(articles, listEl);
+  updateHubStats(articles);
+
+  let activeTags = new Set(allTags);
+
+  document.getElementById('tag-filters')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-tag]');
+    if (!btn) return;
+
+    const tag = btn.dataset.tag;
+
+    if (tag === 'all') {
+      const allActive = activeTags.size === allTags.length;
+      activeTags = allActive ? new Set() : new Set(allTags);
+    } else {
+      if (activeTags.has(tag)) activeTags.delete(tag);
+      else activeTags.add(tag);
+    }
+
+    syncTagFilterUI(allTags, activeTags);
+    filterArticles(articles, activeTags, listEl);
+  });
+}
+
+function renderTagFilters(tags) {
+  const container = document.getElementById('tag-filters');
+  if (!container) return;
+
+  const pills = tags
+    .map(
+      (tag) =>
+        `<button type="button" class="tag ${TAG_MAP[tag]?.class || 'tag--neutral'} tag-filter is-active" data-tag="${tag}">${tag}</button>`
+    )
+    .join('');
+
+  container.innerHTML = `
+    <button type="button" class="tag tag--neutral tag-filter is-active" data-tag="all">все</button>
+    ${pills}
+  `;
+}
+
+function syncTagFilterUI(allTags, activeTags) {
+  document.querySelectorAll('.tag-filter').forEach((btn) => {
+    if (btn.dataset.tag === 'all') {
+      btn.classList.toggle('is-active', activeTags.size === allTags.length);
+    } else {
+      btn.classList.toggle('is-active', activeTags.has(btn.dataset.tag));
+    }
+  });
+}
+
+function renderSidebarArticles(articles) {
+  const nav = document.getElementById('sidebar-articles');
+  if (!nav) return;
+
+  nav.innerHTML = articles
+    .map((article) => {
+      const date = formatShortDate(article.date);
+      return `<a class="nav-link" href="articles/${article.id}.html">${article.title}<span class="nav-link-meta">${date} · ${article.author}</span></a>`;
+    })
+    .join('');
+}
+
+function renderArticleGrid(articles, container) {
+  container.innerHTML = articles.map((article) => renderArticleCard(article)).join('');
+
+  const empty = document.getElementById('empty-state');
+  if (empty) empty.classList.toggle('is-hidden', articles.length > 0);
+}
+
+function filterArticles(articles, activeTags, container) {
+  const filtered =
+    activeTags.size === 0
+      ? []
+      : articles.filter((article) => article.tags.some((tag) => activeTags.has(tag)));
+
+  container.querySelectorAll('.article-card').forEach((card) => {
+    const id = card.dataset.id;
+    const visible = filtered.some((a) => a.id === id);
+    card.classList.toggle('is-hidden', !visible);
+  });
+
+  const empty = document.getElementById('empty-state');
+  if (empty) empty.classList.toggle('is-hidden', filtered.length > 0);
 }
 
 function renderArticleCard(article) {
-  const date = new Date(article.date + 'T00:00:00').toLocaleDateString('ru-RU', {
+  const date = formatDate(article.date);
+  const tags = article.tags
+    .map((t) => `<span class="tag ${TAG_MAP[t]?.class || 'tag--neutral'}">${t}</span>`)
+    .join('');
+
+  return `
+    <a class="article-card" href="articles/${article.id}.html" data-id="${article.id}" data-tags="${article.tags.join(',')}">
+      <div class="article-card-top">
+        <h2>${article.title}</h2>
+        <span class="article-card-date">${date}</span>
+      </div>
+      <p class="article-card-summary">${article.summary}</p>
+      <div class="article-card-bottom">
+        <span class="article-card-author">${article.author}</span>
+        <div class="tags">${tags}</div>
+      </div>
+    </a>
+  `;
+}
+
+function updateHubStats(articles) {
+  const countEl = document.getElementById('stat-count');
+  const tagsEl = document.getElementById('stat-tags');
+  if (!countEl) return;
+
+  const allTags = new Set(articles.flatMap((a) => a.tags));
+  countEl.textContent = articles.length;
+  if (tagsEl) tagsEl.textContent = allTags.size;
+}
+
+function formatDate(dateStr) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
+}
 
-  const tagMap = {
-    организация: 'badge-bad',
-    плейтест: 'badge-ok',
-    стрельба: 'badge-warn',
-    баланс: 'badge-good',
-  };
-
-  const tags = article.tags
-    .map((t) => `<span class="badge ${tagMap[t] || 'badge-neutral'}">${t}</span>`)
-    .join('');
-
-  return `
-    <a class="article-card" href="articles/${article.id}.html">
-      <h2>${article.title}</h2>
-      <p>${article.summary}</p>
-      <div class="article-card-footer">
-        <span class="article-date">${date}</span>
-        <span class="article-date">${article.author}</span>
-        ${tags}
-      </div>
-    </a>
-  `;
+function formatShortDate(dateStr) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 }

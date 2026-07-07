@@ -6,6 +6,11 @@
     "date": "2026-07-07",
     "tags": ["плейтест", "стрельба", "баланс", "организация"],
     "summary": "Фидбек по организации плейтеста, механике стрельбы и балансу оружия. Предложения по регламенту, отдаче и статам.",
-    "sections": ["organization", "gameplay", "stats", "summary"]
+    "sections": [
+      { "id": "section-organization", "label": "Организация" },
+      { "id": "section-gameplay", "label": "Стрельба" },
+      { "id": "section-stats", "label": "Статы" },
+      { "id": "section-summary", "label": "Итог" }
+    ]
   }
 ]
