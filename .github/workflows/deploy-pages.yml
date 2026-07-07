@@ -16,11 +16,15 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.ssh/deploy_key
+          printf '%s\n' "${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
       - name: Push to Feedback-pages
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no
         run: |
           git clone git@github.com:Nyrokume/Feedback-pages.git pages-repo
 
@@ -42,5 +46,5 @@ jobs:
             echo "No changes to deploy"
           else
             git commit -m "Deploy from Feedback@${GITHUB_SHA:0:7}"
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" git push
+            git push
           fi
