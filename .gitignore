@@ -7,3 +7,7 @@ Thumbs.db
 .idea/
 *.swp
 *~
+
+# Deploy keys (local only)
+.deploy_key
+.deploy_key.pub

@@ -1,0 +1,46 @@
+name: Deploy to Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Push to Feedback-pages
+        run: |
+          git clone git@github.com:Nyrokume/Feedback-pages.git pages-repo
+
+          rsync -av --delete \
+            --exclude .git \
+            --exclude .github \
+            --exclude pages-repo \
+            --exclude .deploy_key \
+            --exclude .deploy_key.pub \
+            --exclude README.md \
+            ./ pages-repo/
+
+          cd pages-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy from Feedback@${GITHUB_SHA:0:7}"
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" git push
+          fi
