@@ -617,6 +617,43 @@ tr:hover td { background: var(--bg-hover); }
 .badge-warn { background: rgba(234,179,8,0.15); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
 .badge-neutral { background: rgba(138,138,138,0.12); color: var(--text-muted); border: 1px solid var(--border-light); }
 
+.weapon-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 12px 0;
+}
+
+.weapon-block-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.stat-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.stat-list li {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 4px 0;
+  margin: 0;
+}
+
+.weapon-block-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
 .weapon-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

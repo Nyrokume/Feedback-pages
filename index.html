@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feedback Hub — Архив плейтестов</title>
-  <meta name="description" content="Хаб статей с фидбеком по плейтестам: организация, геймплей, баланс.">
+  <meta name="description" content="Архив отчётов плейтестов">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,30 +30,18 @@
         </a>
       </div>
 
-      <div class="sidebar-block">
-        <div class="sidebar-label">Теги</div>
-        <div class="tags" id="tag-filters">
-          <button type="button" class="tag tag--neutral tag-filter is-active" data-tag="all">все</button>
-          <span class="tag tag--playtest">плейтест</span>
-          <span class="tag tag--shooting">стрельба</span>
-          <span class="tag tag--balance">баланс</span>
-          <span class="tag tag--org">организация</span>
-        </div>
-      </div>
-
       <div class="sidebar-block" style="padding-bottom:0;border-bottom:none">
         <div class="sidebar-label">Статьи</div>
       </div>
       <nav class="nav-links" id="sidebar-articles">
         <a class="nav-link" href="articles/2026-07-07-playtest-raider.html">
           Плейтест — 07.07.2026
-          <span class="nav-link-meta">7 июл. 2026 · Raider</span>
+          <span class="nav-link-meta">07.07.2026 · Raider</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <p>Архив отчётов плейтестов. Каждая статья — организация, геймплей, статы, итог.</p>
-        <p class="copy">&copy; 2026</p>
+        <p>Архив отчётов плейтестов.</p>
       </div>
     </aside>
 
@@ -61,33 +49,21 @@
       <div class="main-inner">
         <header class="hub-header">
           <h1>Статьи</h1>
-          <p>Отчёты плейтестов с разбивкой по разделам. Фильтруйте по тегам в боковой панели.</p>
-          <div class="hub-stats">
-            <span><strong id="stat-count">1</strong> статей</span>
-            <span><strong id="stat-tags">4</strong> тегов</span>
-          </div>
+          <p>Отчёты плейтестов.</p>
         </header>
 
         <div id="article-list" class="article-grid">
-          <a class="article-card" href="articles/2026-07-07-playtest-raider.html" data-id="2026-07-07-playtest-raider" data-tags="плейтест,стрельба,баланс,организация">
+          <a class="article-card" href="articles/2026-07-07-playtest-raider.html" data-id="2026-07-07-playtest-raider">
             <div class="article-card-top">
               <h2>Плейтест — 07.07.2026</h2>
-              <span class="article-card-date">7 июля 2026</span>
+              <span class="article-card-date">07.07.2026</span>
             </div>
-            <p class="article-card-summary">Фидбек по организации плейтеста, механике стрельбы и балансу оружия. Предложения по регламенту, отдаче и статам.</p>
+            <p class="article-card-summary">Фидбек по организации плейтеста, механике стрельбы и балансу оружия.</p>
             <div class="article-card-bottom">
               <span class="article-card-author">Raider</span>
-              <div class="tags">
-                <span class="tag tag--playtest">плейтест</span>
-                <span class="tag tag--shooting">стрельба</span>
-                <span class="tag tag--balance">баланс</span>
-                <span class="tag tag--org">организация</span>
-              </div>
             </div>
           </a>
         </div>
-
-        <p class="empty-state is-hidden" id="empty-state">Нет статей с выбранными тегами.</p>
       </div>
     </div>
   </div>
