@@ -68,19 +68,31 @@ function renderSidebarArticles(articles) {
 
 function renderArticleCard(article) {
   const date = formatDate(article.date);
+  const formats = renderFormatLinks(article);
 
   return `
-    <a class="article-card" href="articles/${article.id}.html" data-id="${article.id}">
+    <article class="article-card" data-id="${article.id}">
       <div class="article-card-top">
-        <h2>${article.title}</h2>
+        <h2><a class="article-card-title" href="articles/${article.id}.html">${article.title}</a></h2>
         <span class="article-card-date">${date}</span>
       </div>
-      <p class="article-card-summary">${article.summary}</p>
+      <p class="article-card-summary">${article.discordSummary || article.summary}</p>
       <div class="article-card-bottom">
         <span class="article-card-author">${article.author}</span>
+        ${formats}
       </div>
-    </a>
+    </article>
   `;
+}
+
+function renderFormatLinks(article) {
+  const links = [`<a class="article-card-format" href="articles/${article.id}.html">Интерактив</a>`];
+
+  if (article.mdFile) {
+    links.push(`<a class="article-card-format" href="${encodeURI(article.mdFile)}">Текст (MD)</a>`);
+  }
+
+  return `<div class="article-card-formats">${links.join('<span class="article-format-sep">·</span>')}</div>`;
 }
 
 function formatDate(dateStr) {

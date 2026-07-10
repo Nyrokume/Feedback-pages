@@ -377,6 +377,46 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 12px;
 }
 
+.article-format-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.article-format-label { color: var(--text-dim); }
+.article-format-current { color: var(--accent); }
+.article-format-sep { color: var(--text-dim); }
+.article-format-link { color: var(--text-muted); }
+.article-format-link:hover { color: var(--accent); }
+
+.article-card-formats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+}
+
+.article-card-format {
+  color: var(--text-muted);
+}
+
+.article-card-format:hover {
+  color: var(--accent);
+}
+
+.article-card-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-card-title:hover {
+  color: var(--accent);
+}
+
 .article-lead {
   font-size: 1rem;
   color: var(--text-muted);
