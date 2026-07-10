@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Плейтест — 10.07.2026 — Feedback Hub</title>
+  <meta name="description" content="Плейтест 10.07.2026 (c) Raider — геймплейный фидбек, II итерация">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle" aria-label="Меню">&#9776; Меню</button>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <a class="brand-link" href="../index.html">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="brand-title">Feedback Hub</div>
+          <div class="brand-sub">Playtest Archive</div>
+        </a>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-label">Разделы</div>
+        <nav class="nav-links" style="padding:0">
+          <a href="../index.html" class="nav-link nav-link--back">&larr; Все статьи</a>
+          <a href="#section-gameplay" class="nav-link" data-section="section-gameplay">Стрельба</a>
+          <a href="#section-smg" class="nav-link" data-section="section-smg">ПП</a>
+          <a href="#section-lmg" class="nav-link" data-section="section-lmg">Пулемёты</a>
+          <a href="#section-ar" class="nav-link" data-section="section-ar">Автоматы</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-meta">
+          <span>10.07.2026</span>
+          <span>Raider</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="main-inner">
+        <nav class="breadcrumb" aria-label="Навигация">
+          <a href="../index.html">Статьи</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Плейтест — 10.07.2026</span>
+        </nav>
+
+        <header class="article-header">
+          <h1>Плейтест — 10.07.2026 (c) Raider</h1>
+          <p class="article-lead">Геймплейный фидбек, II итерация</p>
+        </header>
+
+        <div class="article-body">
+
+          <section id="section-gameplay">
+            <h2 class="section-title">Геймплейный фидбек, II итерация</h2>
+
+            <h3 class="subsection-title">Механика стрельбы</h3>
+
+            <h4>Общее ощущение</h4>
+            <div class="list-block">
+              <p class="content-block-text" style="margin:0">Стрельба по-прежнему ощущается «пластиковой» и в целом производит слабое впечатление. Проблемы заметны сразу в нескольких аспектах:</p>
+              <ul style="margin-top:12px">
+                <li>стрейфы;</li>
+                <li>визуальная отдача;</li>
+                <li>разброс на дистанции;</li>
+                <li>общее ощущение контроля над оружием.</li>
+              </ul>
+            </div>
+
+            <h4>Разброс и дистанция</h4>
+            <div class="list-block list-block--warn">
+              <ul>
+                <li>При стрейфах возникает ощущение отсутствия честного трекинга: попадания регистрируются нестабильно, и бой на дистанции часто воспринимается как казино.</li>
+                <li>Особенно заметно у оружия с выраженной горизонтальной отдачей — например, SCAR-H, где перестрелка слишком часто превращается в лотерею вместо предсказуемого контроля.</li>
+                <li>На средней и дальней дистанции проблема усиливается: отдача плохо читается, её сложно предсказать и компенсировать, а при стрейфах стабильность попаданий заметно проседает.</li>
+              </ul>
+            </div>
+
+            <div class="info-box info-box--warning">
+              <div class="info-box-title">Итог по блоку</div>
+              <p class="info-box-text">В текущем виде стрельбе не хватает предсказуемости, читаемости и ощущения контроля. Основной упор стоит сделать на снижение ощущения рандома — особенно при стрейфах и на дистанции — чтобы перестрелки снова ощущались как скилловый трекинг, а не как игра на удачу.</p>
+            </div>
+          </section>
+
+          <section id="section-smg">
+            <h2 class="section-title">Правки пистолетов-пулемётов</h2>
+
+            <h3 class="subsection-title">Общее ощущение</h3>
+            <div class="list-block list-block--ok">
+              <p class="content-block-text" style="margin:0">Пистолеты-пулемёты в целом выглядят как самый комфортный класс для ближнего боя и PvE. У них уже есть понятная ниша, но части оружия требуется подправить урон, вместимость магазина и различие между моделями — чтобы они сильнее ощущались как отдельные варианты, а не почти одинаковые стволы.</p>
+            </div>
+
+            <h3 class="subsection-title">Отдельные стволы</h3>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">Бизон</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Комфортный и универсальный ган, особенно хорошо подходит для раннего PvE-контента.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">Витязь</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">При выравнивании разницы с Бизоном (перелив пуль в урон) станет очень приятным и комфортным.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">MP5K</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Не хватает урона. Магазин на 50 патронов необходим — стоит вернуть в формат, близкий к оригиналу.</p>
+            </div>
+
+            <div class="text-group">
+              <p><strong>Общее по ПП:</strong> класс в целом удачный, но ему не хватает более чёткого различия между оружием и сильнее выраженной роли каждого ствола. Им не хватает своих игровых ситуаций и ниши для реализации.</p>
+            </div>
+          </section>
+
+          <section id="section-lmg">
+            <h2 class="section-title">Правки пулемётов</h2>
+
+            <h3 class="subsection-title">Общее ощущение</h3>
+            <div class="list-block">
+              <p class="content-block-text" style="margin:0">Пулемёты в текущем виде выглядят неплохо, но им не хватает уникальности именно как классу оружия.</p>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">Ключевая правка класса</div>
+              <p class="info-box-text">Вернуть сошки и убрать или снизить влияние дебаффов в положении лёжа — чтобы класс сильнее ощущался.</p>
+            </div>
+
+            <h3 class="subsection-title">Отдельные стволы</h3>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">MG42</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Смешной, но юзабельный пулемёт со спорной отдачей; в целом находится в балансе.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">ПКП</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Быстрый зум немного просится на снижение ради комфорта и баланса, но в целом оружие остаётся в допустимых пределах.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">ПКМ</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Не хватает модульности. В остальном — вполне классический пулемёт.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">РПК</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Очень жёсткая отдача, но для low-tier оружия это выглядит оправданно. При этом не хватает именно пулемётных фишек как у отдельного класса.</p>
+            </div>
+
+            <div class="weapon-block">
+              <p class="weapon-block-name">L86</p>
+              <p class="weapon-block-note" style="border:none;padding:0;margin:0">Универсален и в целом хорошо вписывается в баланс.</p>
+            </div>
+          </section>
+
+          <section id="section-ar">
+            <h2 class="section-title">Правки автоматов</h2>
+
+            <div class="text-group">
+              <p>Снижаем разброс на дистанции и убираем шизо-горизонталку. Посмотрите геймплей ниже — станет понятно, как нормально играются автоматы.</p>
+            </div>
+
+            <div class="refs-group">
+              <p class="refs-group-label">Референсы геймплея</p>
+              <a class="media-ref" href="https://www.youtube.com/watch?v=xfb3IijVuOU" target="_blank" rel="noopener">
+                <span class="media-ref-icon media-ref-icon--yt">YT</span>
+                <span class="media-ref-body">
+                  <span class="media-ref-title">https://www.youtube.com/watch?v=xfb3IijVuOU</span>
+                  <span class="media-ref-meta">YouTube</span>
+                </span>
+                <span class="media-ref-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="media-ref" href="https://www.youtube.com/watch?v=4nt9MZ1Ef4o" target="_blank" rel="noopener">
+                <span class="media-ref-icon media-ref-icon--yt">YT</span>
+                <span class="media-ref-body">
+                  <span class="media-ref-title">https://www.youtube.com/watch?v=4nt9MZ1Ef4o</span>
+                  <span class="media-ref-meta">YouTube</span>
+                </span>
+                <span class="media-ref-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+
+            <div class="info-box info-box--success">
+              <div class="info-box-title">Вывод</div>
+              <p class="info-box-text">Думаю, вы заметили: 0 разброса — только падение урона на дистанции и визуальная отдача с вертикалкой.</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-07-10-playtest-raider",
+    "title": "Плейтест — 10.07.2026",
+    "author": "Raider",
+    "date": "2026-07-10",
+    "summary": "Геймплейный фидбек, II итерация: стрельба, пистолеты-пулемёты, пулемёты и автоматы.",
+    "sections": [
+      { "id": "section-gameplay", "label": "Стрельба" },
+      { "id": "section-smg", "label": "ПП" },
+      { "id": "section-lmg", "label": "Пулемёты" },
+      { "id": "section-ar", "label": "Автоматы" }
+    ]
+  },
+  {
     "id": "2026-07-07-playtest-raider",
     "title": "Плейтест — 07.07.2026",
     "author": "Raider",
